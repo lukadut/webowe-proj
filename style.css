@@ -1,0 +1,21 @@
+maw-list .add-button {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+}
+table{
+    width: 100%;
+    table-layout: fixed;
+}
+table, th, td {
+
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+@media
+(-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi),( max-width: 1024px){
+    md-input-container {
+        display:block;
+    }
+}

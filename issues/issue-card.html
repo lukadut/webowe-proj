@@ -1,0 +1,8 @@
+<md-card>
+    <md-card-title>{{ $ctrl.issue.title }}</md-card-title>
+    <md-card-content>
+        <span>Autor: {{ $ctrl.issue.author }}</span>
+        <span>Godzina: {{ $ctrl.issue.time | date:'yyyy-MM-dd HH:mm:ss' }}</span>
+        <span>Wpis: {{ $ctrl.issue.content }}</span>
+    </md-card-content>
+</md-card>

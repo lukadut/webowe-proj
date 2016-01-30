@@ -1,0 +1,8 @@
+<div>
+    <md-content>
+        <maw-issue-card ng-repeat="issue in $ctrl.issues | orderBy:'-'" issue="issue" ng-click="$ctrl.goToIssue(issue)"></maw-issue-card>
+    </md-content>
+    <md-button class="md-fab add-button" ng-click="$ctrl.goToAddForm()">
+        <md-icon md-font-set="mi">add</md-icon>
+    </md-button>
+</div>

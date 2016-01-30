@@ -1,0 +1,78 @@
+<form name="issueForm" layout-padding>
+    <!-- 308
+    <table>
+        <tr>
+            <td ng-click="$ctrl.onClick(1)" >1</td>
+            <td ng-click="$ctrl.onClick(2)" >2</td>
+            <td ng-click="$ctrl.onClick(3)" >3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td></td>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td></td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+        </tr>
+    </table> -->
+    <h2>Nowe zgłoszenie</h2>
+    <md-input-container>
+        <label>Tytuł:</label>
+        <input type="text" name="title" ng-model="$ctrl.newIssue.title" required />
+        <div ng-messages="issueForm.title.$error">
+            <div ng-message="required">To pole jest wymagane</div>
+        </div>
+    </md-input-container>
+    <md-input-container>
+        <label>Sala:</label>
+         <input type="text" ng-model="$ctrl.newIssue.room" required />
+        <!--<md-select ng-model="$ctrl.newIssue.room" required>-->
+            <!--<md-option ng-repeat="size in rooms" value="{{size}}">{{size}}</md-option>-->
+        <!--</md-select>-->
+        <div ng-messages="issueForm.title.$error">
+            <div ng-message="required">To pole jest wymagane</div>
+        </div>
+    </md-input-container>
+    <md-input-container>
+        <label>IP Komputera:</label>
+        <input type="text" ng-model="$ctrl.newIssue.ip" />
+    </md-input-container>
+    <md-input-container>
+        <label>Opis problemu:</label>
+        <textarea ng-model="$ctrl.newIssue.description"></textarea>
+    </md-input-container>
+
+
+    <md-button ng-click="$ctrl.addIssue()" ng-disabled="issueForm.$invalid">Dodaj</md-button>
+</form>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="maw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular-route.min.js" defer></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular-animate.min.js" defer></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular-aria.min.js" defer></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular-messages.min.js" defer></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js" defer></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="config.js" defer></script>
+    <script src="user/user.js" defer></script>
+    <script src="issues/issues.js" defer></script>
+</head>
+<body ng-controller="MainCtrl as mainCtrl" layout="column" layout-fill>
+    <md-toolbar class="md-toolbar-tools" md-scroll-shrink>
+        <h2>Zgłoszenia</h2>
+        <span flex></span>
+        <md-button ng-click="mainCtrl.goToList()" ng-if="mainCtrl.isLogged">Lista</md-button>
+        <md-button ng-click="mainCtrl.logOut()" ng-if="mainCtrl.isLogged">Wyloguj</md-button>
+    </md-toolbar>
+    <md-content ng-view flex></md-content>
+</body>
+</html>
