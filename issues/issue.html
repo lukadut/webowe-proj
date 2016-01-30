@@ -1,13 +1,11 @@
 <md-content layout-padding>
-    saas
-    {{ $ctrl.issue }}
-
     <maw-issue-card issue="$ctrl.issue"></maw-issue-card>
-    <div ng-if="$ctrl.isAuthor">
-        <md-button ng-click="$ctrl.done()">Zrobione</md-button>
+    <div ng-if="$ctrl.isAuthor" layout="row" layout-align="end">
+        <md-button class="md-primary md-raised" ng-click="$ctrl.done()">Zrobione</md-button>
     </div>
-    <div ng-if="$ctrl.isLaborant">
-        <md-button ng-click="$ctrl.started()">Zaczęte</md-button>
-        <md-button ng-click="$ctrl.done()">Zrobione</md-button>
+    <div ng-if="$ctrl.isLaborant" layout="row" layout-align="end">
+        <md-button class="md-primary md-raised" ng-click="$ctrl.started()">Zaczęte</md-button>
+        <md-button class="md-primary md-raised" ng-click="$ctrl.done()">Zrobione</md-button>
     </div>
+    <maw-issue-comments issue="$ctrl.issue"></maw-issue-comments>
 </md-content>

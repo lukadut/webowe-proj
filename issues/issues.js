@@ -93,47 +93,46 @@ angular.module('maw')
     })
     .component('mawForm', {
         templateUrl: 'issues/form.html',
-        controller: ['issueRepository', function (issueRepository) {
+        controller: ['issueRepository', '$location', 'rooms', 'userService', function (issueRepository, $location, rooms, userService) {
             var that = this;
 
-            this.rooms = ['308','309','406','409','412','510'];
+            this.rooms = rooms;
             this.newIssue = {};
 
             this.addIssue = addIssue;
 
             function addIssue () {
-                console.log('sending');
                 that.newIssue.time = new Date().getTime();
-                issueRepository.addIssue(that.newIssue)
-                    .then(function () {
-                        that.newIssue = {};
+                userService.getUser()
+                    .then(function (user) {
+                        that.newIssue.author = user.name;
+                        return issueRepository.addIssue(that.newIssue);
                     })
-                    .then();
+                    .then(function (addedIssue) {
+                        that.newIssue = {};
+                        $location.url('/issues/'+addedIssue.key());
+                    });
             }
 
         }]
     })
-    .service('issueRepository', ['$firebaseArray', '$firebaseObject', 'firebaseFactory','$location', function ($firebaseArray, $firebaseObject, firebaseFactory,$location) {
+    .value('rooms', ['308','309','406','409','412','510'])
+    .service('issueRepository', ['$firebaseArray', '$firebaseObject', 'firebaseFactory', function ($firebaseArray, $firebaseObject, firebaseFactory) {
         var issuesRef = firebaseFactory(''),
             issuesArray = $firebaseArray(issuesRef);
 
         this.getAllIssues = getAllIssues;
         this.addIssue = addIssue;
         this.getIssue = getIssue;
+        this.addCommentForIssue = addCommentForIssue;
+        this.updateIssue = updateIssue;
 
         function getAllIssues () {
             return issuesArray.$loaded();
         }
 
         function addIssue (issue) {
-            console.log("issue " + JSON.stringify(issue));
-            //$location.url('/issues/');
-
-            return issuesArray.$add(issue)
-                .then(function(issuesRef){
-
-                    $location.url('/issues/'+issuesRef.key());
-                });
+            return issuesArray.$add(issue);
         }
 
         function getIssue (issueId) {
@@ -151,6 +150,21 @@ angular.module('maw')
                 Object.assign(data, issue);
 
                 return data.$save();
+            });
+        }
+
+        function addCommentForIssue (issue, comment) {
+            var firebase = firebaseFactory(issue.$id),
+                obj = $firebaseObject(firebase);
+
+            return obj.$loaded(function (data) {
+                data.comments = data.comments || [];
+                data.comments.push(comment);
+
+                return data.$save();
+            })
+            .then(function () {
+                return obj;
             });
         }
     }]);

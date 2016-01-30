@@ -1,0 +1,15 @@
+<div>
+    <form>
+        <md-input-container flex="100">
+            <label>Dodaj komentarz:</label>
+            <textarea ng-model="$ctrl.newComment"></textarea>
+        </md-input-container>
+        <md-button class="md-primary md-raised" ng-click="$ctrl.addComment()">Dodaj</md-button>
+    </form>
+    <md-list>
+        <md-subheader>Komentarze</md-subheader>
+
+        <maw-comment ng-repeat="comment in $ctrl.issue.comments" comment="comment"></maw-comment>
+    </md-list>
+</div>
+
