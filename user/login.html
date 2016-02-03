@@ -1,10 +1,14 @@
-<form>
+<form name="loginForm">
     <md-content layout-padding>
         <md-input-container>
             <label>Login</label>
-            <input type="text" ng-model="$ctrl.username" />
+            <input type="text" name="user" ng-model="$ctrl.username" required/>
+            <div ng-messages="loginForm.user.$error">
+            	<div ng-message="required">To pole jest wymagane</div>
+        	</div>
         </md-input-container>
-        <md-button class="md-primary md-raised" ng-click="$ctrl.login()">Zaloguj</md-button>
+
+        <md-button class="md-primary md-raised" ng-click="$ctrl.login()" ng-disabled="loginForm.$invalid">Zaloguj</md-button>
     </md-content>
 
 
