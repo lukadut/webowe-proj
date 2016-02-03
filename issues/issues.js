@@ -7,6 +7,7 @@ angular.module('maw')
 
             this.goToAddForm = goToAddForm;
             this.goToIssue = goToIssue;
+            this.goToTop = goToTop;
 
             issueRepository.getAllIssues()
                 .then(function (issues) {
@@ -20,6 +21,11 @@ angular.module('maw')
             function goToIssue (issue) {
                 console.log(issue);
                 $location.url('/issues/'+issue.$id);
+            }
+            function goToTop(){
+                
+                    $("body").animate({scrollTop: 0}, "fast");
+                
             }
         }]
     })
@@ -98,8 +104,18 @@ angular.module('maw')
 
             this.rooms = rooms;
             this.newIssue = {};
+            this.selectedRoom = selectedRoom;
+            this.test = test;
 
             this.addIssue = addIssue;
+
+            function test(room){
+                console.log("test " + room.$error);
+            }
+
+            function selectedRoom(a){
+                console.log("wybrane " + a);
+            }
 
             function addIssue () {
                 that.newIssue.time = new Date().getTime();

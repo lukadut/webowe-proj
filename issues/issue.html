@@ -1,11 +1,11 @@
 <md-content layout-padding>
     <maw-issue-card issue="$ctrl.issue"></maw-issue-card>
-    <div ng-if="$ctrl.isAuthor" layout="row" layout-align="end">
-        <md-button class="md-primary md-raised" ng-click="$ctrl.done()">Zrobione</md-button>
+    <div ng-if="$ctrl.isAuthor && !$ctrl.isLaborant" layout="row" layout-align="end">
+        <md-button ng-if="!$ctrl.issue.done" class="md-primary md-raised" ng-click="$ctrl.done()">Zrobione</md-button>
     </div>
     <div ng-if="$ctrl.isLaborant" layout="row" layout-align="end">
-        <md-button class="md-primary md-raised" ng-click="$ctrl.started()">Zaczęte</md-button>
-        <md-button class="md-primary md-raised" ng-click="$ctrl.done()">Zrobione</md-button>
+        <md-button ng-if="!$ctrl.issue.started && !$ctrl.issue.done" class="md-primary md-raised" ng-click="$ctrl.started()">Zaczęte</md-button>
+        <md-button ng-if="$ctrl.issue.started && !$ctrl.issue.done" class="md-primary md-raised" ng-click="$ctrl.done()">Zrobione</md-button>
     </div>
     <maw-issue-comments issue="$ctrl.issue"></maw-issue-comments>
 </md-content>

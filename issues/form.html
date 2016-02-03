@@ -7,12 +7,12 @@
             <div ng-message="required">To pole jest wymagane</div>
         </div>
     </md-input-container>
-    <md-input-container>
+    <md-input-container class="select-room">
         <label>Sala:</label>
-        <md-select ng-model="$ctrl.newIssue.room" required>
-            <md-option ng-repeat="room in $ctrl.rooms" ng-invalid.ng-dirty ng-value="{{ room }}">{{ room }}</md-option>
+        <md-select name="room" ng-model="$ctrl.newIssue.room" required ng-change="$ctrl.test(room)">
+            <md-option ng-repeat="room in $ctrl.rooms" ng-invalid.ng-dirty ng-value="{{ room }}" >{{ room }}</md-option>
         </md-select>
-        <div ng-messages="issueForm.title.$error">
+        <div ng-messages="issueForm.room.$error">
             <div ng-message="required">To pole jest wymagane</div>
         </div>
     </md-input-container>
@@ -24,7 +24,5 @@
         <label>Opis problemu:</label>
         <textarea ng-model="$ctrl.newIssue.description"></textarea>
     </md-input-container>
-
-
-    <md-button ng-click="$ctrl.addIssue()" ng-disabled="issueForm.$invalid">Dodaj</md-button>
+    <md-button class="md-primary md-raised" ng-click="$ctrl.addIssue()" ng-disabled="issueForm.$invalid">Dodaj</md-button>
 </form>

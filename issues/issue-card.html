@@ -4,14 +4,14 @@
     </md-card-title>
     <md-card-content layout="row">
         <div layout="column">
-            <span>Autor: {{ $ctrl.issue.author }}</span>
-            <span>Godzina: {{ $ctrl.issue.time | date:'medium' }}</span>
-            <span>Wpis: {{ $ctrl.issue.description }}</span>
+            <span class="issue-author">Autor: {{ $ctrl.issue.author }}</span>
+            <span class="issue-timestamp">Godzina: {{ $ctrl.issue.time | date:'HH:mm dd MMM yyyy' }}</span>
+            <span class="issue-description">Wpis: {{ $ctrl.issue.description }}</span>
         </div>
         <div flex></div>
         <div layout="column" layout-align="end end">
-            <span ng-if="$ctrl.issue.started && !$ctrl.issue.done">Rozpoczęte</span>
-            <span ng-if="$ctrl.issue.done">Zakończone</span>
+            <span class="issue-status issue-started" ng-if="$ctrl.issue.started && !$ctrl.issue.done">Rozpoczęte</span>
+            <span class="issue-status issue-completed" ng-if="$ctrl.issue.done">Zakończone</span>
         </div>
     </md-card-content>
 </md-card>

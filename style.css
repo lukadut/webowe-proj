@@ -13,6 +13,49 @@ table, th, td {
     border-collapse: collapse;
 }
 
+.select-room{
+    height: 54px;
+}
+.issue-status{
+    padding: 11px 11px;
+    border: solid 4px ;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.issue-status.issue-started{
+    background-color: rgba(252, 136, 47, 0.67);
+    border-color: rgb(252, 136, 47);
+}
+
+.issue-status.issue-completed{
+    background-color: rgba(0,185,64,0.67);
+    border-color: rgb(0,185,64);
+}
+
+.issue-list{
+    width: 100%;
+}
+
+.issue-description, .comment-comment{
+    white-space: pre-line;
+}
+
+.issue-list .issue-description, .issue-list .issue-author{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.issue-list md-card-content > div:nth-of-type(1){
+    width: calc(100% - 120px);
+}
+
+div[ng-message="required"]{
+    opacity: 1;
+}
+
 @media
 (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi),( max-width: 1024px){
     md-input-container {

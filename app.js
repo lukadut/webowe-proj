@@ -37,7 +37,7 @@ angular.module('maw', ['firebase', 'ngRoute', 'ngMaterial'])
     }])
     .factory('firebaseFactory', [function () {
         return function firebaseFactory (link) {
-            return new Firebase('https://laborant.firebaseio.com/projektpre/' + link);
+            return new Firebase('https://laborant.firebaseio.com/projekt/' + link);
         };
     }]);
 
