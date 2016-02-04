@@ -6,6 +6,8 @@
         <div layout="column">
             <span class="issue-author">Autor: {{ $ctrl.issue.author }}</span>
             <span class="issue-timestamp">Godzina: {{ $ctrl.issue.time | date:'HH:mm dd MMM yyyy' }}</span>
+            <span class="issue-room">Sala: {{$ctrl.issue.room}}</span>
+            <span class="issue-ip">Komputer: {{$ctrl.issue.ip}}</span>
             <span class="issue-description">Wpis: {{ $ctrl.issue.description }}</span>
         </div>
         <div flex></div>
