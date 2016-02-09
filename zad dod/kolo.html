@@ -1,0 +1,113 @@
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+
+*{
+    padding: 0px;
+}
+body {
+    height: 100%;
+    width: 100%;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    margin: auto;
+    position: absolute;
+}
+table{
+    height: 75%;
+    width: 100%;
+    overflow: hidden;
+}
+tr{
+    height:30px;
+}
+.class-1{
+    background-color: rgb(215,215,215);
+}
+#control-panel{
+    position: fixed;
+    bottom: 0px;
+    align-items: center;
+    text-align: center;
+
+    background-color: rgb(250,114,192);
+}
+button, i{
+    font-size: 4vmin;   
+}
+#control-panel, #footer{
+    height: 20%;
+    width: 100%;
+}
+button{
+    height: 100%;
+    width: 40%;
+}
+</style>
+    <script src="scripts/jquery-1.11.1.min.js"></script>
+<script>
+var topMargin;
+var rowSizes;
+
+window.onload=function(){
+
+    document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
+    generateTable(Math.round(40 + Math.random()*100));
+
+    rowSizes = document.getElementById('row-0').getClientRects()[0];
+
+    //$('table').on('vmousedown', function(e){ e.preventDefault(); });
+
+}
+// window.onresize = function(){
+//     function scroll(direction){
+//         console.log(direction);
+//         window.scrollBy(0,direction * calculateHalfOfRows()*(rowSizes.height + 2));
+//     }
+// }
+
+$.fn.scrollBy = function (x, y) {
+    return this.animate({
+        scrollLeft: '+=' + x,
+        scrollTop: '+=' + y
+    });
+};
+
+function generateTable(h){
+    var $table = $('<table/>');
+    for(var i=0;i<h;i++){
+        var id = 'row-' + i;
+        var clas = 'class-' + (i%2);
+        var $tr = $table.append( '<tr><td id='+id+' class='+clas+'>' + 'wiersz ' +  i + '</td></tr>' );
+    }
+    $('#table').append($table);
+    $('#down').click(function(){
+        $('html,body').stop().scrollBy(0,scrolledRows(1));
+    });
+    $('#up').click(function(){
+        $('html,body').stop().scrollBy(0,scrolledRows(-1));
+    });
+}
+
+function scrolledRows(direction){
+    return direction * calculateHalfOfRows()*(rowSizes.height + 2);
+}
+
+function calculateHalfOfRows(){
+    return Math.floor(Math.round(window.innerHeight*0.75 / rowSizes.height)/2);
+}
+</script>
+<style type="text/css"></style></head>
+<body>
+<div id='table'></div>
+<div id='control-panel'>
+    <button id="up"><i class="material-icons">arrow_upward</i>do góry</button>
+    <button id="down"><i class="material-icons">arrow_downward</i>w dół</button>
+</div>
+<div id='footer'></div>
+
+
+
+</body></html>

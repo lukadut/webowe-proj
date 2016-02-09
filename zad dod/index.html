@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" SYSTEM "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <script src="scripts/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript" src="scripts/wz_jsgra.js"></script>
+
+<script type="text/javascript" src="scripts/jquery00.js"></script>
+<script type="text/javascript" src="scripts/jquery01.js"></script>
+
+<script>
+
+$(document).ready(function () {   
+	$('#sample').fancygestures(function (data) {
+		console.log(data);
+		if(~data.indexOf('kolo')){
+			console.log('kolo');
+			window.location="kolo.html";
+			return;
+		}
+
+		if(~data.indexOf('skos')){
+			console.log('skos');
+			window.location="ukos.html";
+			return;
+		}
+		console.log('inne');
+		window.location="inne.html";
+	});
+});
+
+</script>
+
+</head>
+<style>
+
+body {
+    height: 99%;
+    width: 99%;
+    margin: auto;
+    position: absolute;
+}
+
+#sample{
+	border:1px solid black;
+	position:relative;
+	height:100%;
+	width:100%;
+	float:left
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+
+
+    background-image: url('rys.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+}
+
+</style>
+<body>
+<div id="sample"></div>
+
+</div>
+
+
+
+
+
+</body>
+</html>
+<!-- This document saved from http://anantgarg.com/fancygestures/ -->
