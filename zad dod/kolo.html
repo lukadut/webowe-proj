@@ -47,6 +47,7 @@ button{
 }
 </style>
     <script src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery00.js"></script>
 <script>
 var topMargin;
 var rowSizes;
@@ -83,10 +84,10 @@ function generateTable(h){
         var $tr = $table.append( '<tr><td id='+id+' class='+clas+'>' + 'wiersz ' +  i + '</td></tr>' );
     }
     $('#table').append($table);
-    $('#down').click(function(){
+    $('#down').on("vmouseup",function(){
         $('html,body').stop().scrollBy(0,scrolledRows(1));
     });
-    $('#up').click(function(){
+    $('#up').on("vmouseup",function(){
         $('html,body').stop().scrollBy(0,scrolledRows(-1));
     });
 }
