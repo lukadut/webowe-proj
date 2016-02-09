@@ -38,11 +38,11 @@ table, th, td {
     width: 100%;
 }
 
-.issue-description, .comment-comment{
+.issue-description, .comment-comment, .issue-ip{
     white-space: pre-line;
 }
 
-.issue-list .issue-description, .issue-list .issue-author{
+.issue-list .issue-description, .issue-list .issue-author, .issue-list .issue-ip{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -52,13 +52,18 @@ table, th, td {
     width: calc(100% - 120px);
 }
 
-div[ng-message="required"]{
-    opacity: 1;
+md-input-container {
+    
+    width: 500px;
+}
+.select-room{
+    width: 200px;
 }
 
 @media
 (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi),( max-width: 1024px){
-    md-input-container {
+    md-input-container, .select-room{
         display:block;
+        width: calc(100% - 10px);
     }
 }
